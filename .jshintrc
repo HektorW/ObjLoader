@@ -1,7 +1,7 @@
 {
     "node": true,
-    "camelcase": true,
-    "curly": true,
+    "camelcase": false,
+    "curly": false,
     "immed": true,
     "latedef": true,
     "newcap": true,
@@ -10,5 +10,15 @@
     "unused": true,
     "strict": true,
     "trailing": true,
-    "smarttabs": true
+    "smarttabs": true,
+    "globals": {
+        "XMLHttpRequest": true,
+        "vec3": true,
+        "root": true,
+        "test": true,
+        "ObjLoader": true,
+        "ok": true,
+        "equal": true,
+        "strictEqual": true
+    }
 }
