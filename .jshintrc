@@ -16,9 +16,11 @@
         "vec3": true,
         "root": true,
         "test": true,
+        "asyncTest": true,
         "ObjLoader": true,
         "ok": true,
         "equal": true,
-        "strictEqual": true
+        "strictEqual": true,
+        "start": true
     }
 }

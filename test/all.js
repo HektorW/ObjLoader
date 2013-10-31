@@ -7,7 +7,7 @@ test("the root object exists", function() {
 });
 
 
-test("we can create Models", function() {
+test("Models can be created", function() {
   var model = new ObjLoader.Model();
   ok(model instanceof ObjLoader.Model, "Model created with new returns an instance of Model");
 
@@ -33,6 +33,28 @@ test("we can create Models", function() {
 
 
 
-test("we can load Models", function() {
-  
+asyncTest("Models load correctly", function() {
+  function registerModelTest(testVars) {
+    stop();
+    ObjLoader.loadModel(
+      testVars.url,
+      function done(model) {
+        equal(model.vertices.length, testVars.vertices, "vertices are ok");
+        equal(model.normals.length, testVars.normals, "normals are ok");
+      },
+      function error() {
+
+      },
+      function progress() {
+
+      }
+    );
+  }
+
+  registerModelTest({
+    url: './models/cube.obj',
+    vertices: 8,
+  })
 });
+
+

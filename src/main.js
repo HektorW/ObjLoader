@@ -73,7 +73,7 @@ var ObjLoader = (function() {
     if(!loader.supported_model_formats[ext]){
       // File format is not supported
       if(error)
-      error('File format not supported');
+        error('File format not supported');
       return;
     }
 
@@ -82,7 +82,7 @@ var ObjLoader = (function() {
     var xhr = new XMLHttpRequest();
     xhr.onprogress = function(ev){
       if(progress)
-      progress(ev);
+        progress(ev);
     };
     xhr.onerror = function(ev){
       if(error)
@@ -98,13 +98,13 @@ var ObjLoader = (function() {
       var file_data = xhr.responseText;
       // Depending on file format handle the data different
       switch(ext){
-      case 'obj': loader.handleObj(file_data, model); break;
+        case 'obj': loader.handleObj(file_data, model); break;
       }
 
       // When the model is loaded and setup
       // model itself will call the done callback on all who is bound
       if(done)
-      done(model);
+        done(model);
     };
 
     xhr.open(
