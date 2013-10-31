@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ObjLoader
 
 Loads 3D-models of .obj format
@@ -41,3 +42,9 @@ We'll do our best to help you out with any contribution issues you may have.
 ## License
 
 MIT. See `LICENSE.txt` in this directory.
+=======
+ObjLoader
+=========
+
+Loads 3D-model of .obj format
+>>>>>>> 83dabc48ab0421784c735a0ffa810ca87a3f020d
