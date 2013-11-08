@@ -90,9 +90,9 @@ var ObjLoader = (function() {
     };
     xhr.onload = function(ev){
       if(xhr.readyState != 4 || xhr.status != 200){
-      if(error)
-        error("Couldn't fetch model {status="+xhr.status+"}", ev);
-      return;
+        if(error)
+          error("Couldn't fetch model {status="+xhr.status+"}", ev);
+        return;
       }
 
       var file_data = xhr.responseText;
@@ -384,7 +384,7 @@ var ObjLoader = (function() {
 
     // #Dependency
     // Some library which defines vec3 and neede functions
-    if(vec3 && vec3.cross) {
+    if(typeof vec3 !== 'undefined' && vec3.cross) {
       loader.calculateBitangents(model);
 
       if(vec3.create && vec3.scale && vec3.normalize && vec3.subtract) {
@@ -402,30 +402,30 @@ var ObjLoader = (function() {
     // model.vertexBuffer.numItems = model.vertices.length / model.vertexBuffer.itemSize;
 
       /* TEXTURE */
-    if( model.texcoords.length > 0 ) {
+    // if( model.texcoords.length > 0 ) {
       // model.texcoordBuffer = gl.createBuffer();
       // gl.bindBuffer(gl.ARRAY_BUFFER, model.texcoordBuffer);
       // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.texcoords), gl.STATIC_DRAW);
       // model.texcoordBuffer.itemSize = 2;
       // model.texcoordBuffer.numItems = model.texcoords.length / model.texcoordBuffer.itemSize;
-    }
+    // }
       /* NORMAL */
-    if( model.normals.length > 0 ) {
+    // if( model.normals.length > 0 ) {
       // model.normalBuffer = gl.createBuffer();
       // gl.bindBuffer(gl.ARRAY_BUFFER, model.normalBuffer);
       // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.normals), gl.STATIC_DRAW);
       // model.normalBuffer.itemSize = 3;
       // model.normalBuffer.numItems = model.normals.length / model.normalBuffer.itemSize;
-    }
+    // }
 
       /* TANGENT */
-    if( model.tangents.length > 0 ) {
+    // if( model.tangents.length > 0 ) {
       // model.tangentBuffer = gl.createBuffer();
       // gl.bindBuffer(gl.ARRAY_BUFFER, model.tangentBuffer);
       // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(model.tangents), gl.STATIC_DRAW);
       // model.tangentBuffer.itemSize = 3;
       // model.tangentBuffer.numItems = model.tangents.length / model.tangentBuffer.itemSize;
-    }
+    // }
 
       /* BITANGENT */
     // if( model.bitangents.length > 0 ) {

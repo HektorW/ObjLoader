@@ -1,5 +1,8 @@
 "use strict";
 
+// JSHint fix
+var test, stop, start, equal, strictEqual;
+
 test("the root object exists", function() {
   ok(ObjLoader, "ObjLoader exists");
   ok(ObjLoader.Model, "ObjLoader.Model exists");
@@ -35,15 +38,18 @@ test("Models can be created", function() {
 
 asyncTest("Models load correctly", function() {
   function registerModelTest(testVars) {
-    stop();
+    // stop();
     ObjLoader.loadModel(
       testVars.url,
       function done(model) {
-        equal(model.vertices.length, testVars.vertices, "vertices are ok");
-        equal(model.normals.length, testVars.normals, "normals are ok");
+        for(var v in testVars.values) {
+          equal(model[v].length, testVars.values[v], "number of "+ v +" is ok");
+        }
+        start();
       },
       function error() {
-
+        ok(false, testVars.url + " encountered an error wehen loading");
+        start();
       },
       function progress() {
 
@@ -52,9 +58,21 @@ asyncTest("Models load correctly", function() {
   }
 
   registerModelTest({
-    url: './models/cube.obj',
-    vertices: 8,
-  })
+    url: '/ObjLoader/test/models/cube.obj',
+    values: {
+      vertices: 6 /* sides */ * 4 /* vertices per side */ * 3 /* 3 values for each vertex */,
+      indices: 36,
+      normals: 72
+    }
+  });
+  registerModelTest({
+    url: '/ObjLoader/test/models/plane.obj',
+    values: {
+      vertices: 1 /* sides */ * 4 /* vertices per side */ * 3 /* 3 values for each vertex */,
+      indices: 6,
+      normals: 12
+    }
+  });
 });
 
 
